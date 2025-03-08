@@ -24,12 +24,21 @@ class PostController extends Controller
   {
     $request->validate([
       'title' => 'required|max:255',
+      'year' => 'required|string',
+      'age' => 'required|integer|min:1',
+      'course' => 'required|string',
       'body' => 'required',
     ]);
-    Post::create($request->all());
-    return redirect()->route('posts.index')
-      ->with('success', 'Post created successfully.');
-  }
+    Post::create([
+        'title' => $request->title,
+        'year' => $request->year,
+        'age' => $request->age,
+        'course' => $request->course,
+        'body' => $request->body,
+    ]);
+
+    return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+}
   /**
    * Update the specified resource in storage.
    *

@@ -9,6 +9,9 @@ class Post extends Model
     //
     protected $fillable = [
   'title',
+  'year',
+  'age',
+  'course',
   'body',
 ];
 }
