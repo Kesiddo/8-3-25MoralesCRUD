@@ -23,14 +23,14 @@ class PostController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'title' => 'required|max:255',
+      'name' => 'required|max:255',
       'year' => 'required|string',
       'age' => 'required|integer|min:1',
       'course' => 'required|string',
       'body' => 'required',
     ]);
     Post::create([
-        'title' => $request->title,
+        'name' => $request->name,
         'year' => $request->year,
         'age' => $request->age,
         'course' => $request->course,
@@ -49,7 +49,7 @@ class PostController extends Controller
   public function update(Request $request, $id)
   {
     $request->validate([
-      'title' => 'required|max:255',
+      'name' => 'required|max:255',
       'body' => 'required',
     ]);
     $post = Post::find($id);
